@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ywybicp1ess8"]
+[gd_scene load_steps=4 format=3 uid="uid://ywybicp1ess8"]
 
 [ext_resource type="Theme" uid="uid://hheneshfv1b2" path="res://ui/themes/your_theme.tres" id="1_i4lq1"]
 [ext_resource type="Script" path="res://ui/screens/settings-screen/settings_screen.gd" id="2_ck7g6"]
 [ext_resource type="PackedScene" uid="uid://cv271fh4d2p13" path="res://ui/components/settings-menu/settings_menu.tscn" id="4_i4lq1"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0gq4h"]
-font_size = 60
 
 [node name="OptionsMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -31,8 +28,8 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 0
+theme_type_variation = &"HeaderLarge"
 text = "Options"
-label_settings = SubResource("LabelSettings_0gq4h")
 horizontal_alignment = 1
 autowrap_mode = 2
 

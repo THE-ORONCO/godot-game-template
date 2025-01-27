@@ -14,7 +14,7 @@ class_name GameManager
 ## Formatable Strig pointing to
 @export var level_location = "res://levels/level_%s.tscn"
 
-@onready var pause_menu: Control
+@onready var pause_menu: Control = $SubViewportContainer/MenuLayer/PauseMenu
 @onready var menu_layer: Viewport = $SubViewportContainer/MenuLayer
 
 var level = 0
@@ -63,6 +63,7 @@ func resume():
 #region Level Loading
 
 func _show_main_level() -> void:
+	InputManager.set_is_in_game(true)
 	var next_level: Node = main_level.instantiate()
 	if next_level.has_signal("win"):
 		next_level.win.connect(_next_level)
@@ -70,6 +71,7 @@ func _show_main_level() -> void:
 		next_level.reset.connect(_reload_current_level)
 	add_child(next_level)
 	current_level_node = next_level
+	
 
 func _next_level() -> void:
 	if level <= max_level and max_level > 0:

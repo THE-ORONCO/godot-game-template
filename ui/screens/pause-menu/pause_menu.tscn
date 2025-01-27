@@ -1,22 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bilai15byqef2"]
+[gd_scene load_steps=4 format=3 uid="uid://bilai15byqef2"]
 
 [ext_resource type="Theme" uid="uid://hheneshfv1b2" path="res://ui/themes/your_theme.tres" id="1_0kumn"]
 [ext_resource type="Script" path="res://ui/screens/pause-menu/pause_menu.gd" id="2_0mnak"]
 [ext_resource type="PackedScene" uid="uid://cv271fh4d2p13" path="res://ui/components/settings-menu/settings_menu.tscn" id="4_e3p6x"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_v8ayn"]
-font_size = 61
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4jql"]
-content_margin_left = 32.0
-content_margin_top = 32.0
-content_margin_right = 32.0
-content_margin_bottom = 32.0
-bg_color = Color(0.329412, 0.501961, 0.768627, 1)
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
 
 [node name="PauseMenuScreen" type="Control"]
 layout_mode = 3
@@ -25,7 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_0kumn")
 script = ExtResource("2_0mnak")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -35,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_0kumn")
 
 [node name="MainPauseMenuPopup" type="PanelContainer" parent="CenterContainer"]
 unique_name_in_owner = true
@@ -46,8 +32,8 @@ layout_mode = 2
 
 [node name="PausedLbl" type="Label" parent="CenterContainer/MainPauseMenuPopup/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderMedium"
 text = "Paused"
-label_settings = SubResource("LabelSettings_v8ayn")
 horizontal_alignment = 1
 
 [node name="ContinueBtn" type="Button" parent="CenterContainer/MainPauseMenuPopup/VBoxContainer"]
@@ -70,11 +56,17 @@ text = "Quit game"
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_q4jql")
+theme = ExtResource("1_0kumn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/SettingsMenuPopup"]
 layout_mode = 2
 theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="CenterContainer/SettingsMenuPopup/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Settings"
+horizontal_alignment = 1
 
 [node name="SettingsMenu" parent="CenterContainer/SettingsMenuPopup/VBoxContainer" instance=ExtResource("4_e3p6x")]
 layout_mode = 2

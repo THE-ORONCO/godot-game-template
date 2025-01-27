@@ -17,7 +17,7 @@ class_name GameManager
 @export var level_location = "res://levels/level_%s.tscn"
 
 @onready var pause_menu: Control = %PauseMenu
-@onready var menu_layer: Viewport = $SubViewportContainer/MenuLayer
+@onready var menu_layer: CanvasLayer = %MenuLayer
 
 var level = 0
 var completed_levels: Array[bool] = []
@@ -47,7 +47,7 @@ func _start_game() -> void:
 
 func pause():
 	InputManager.set_is_paused(true)
-	$SubViewportContainer.move_to_front()
+	menu_layer.move_to_front()
 	pause_menu.move_to_front()
 	pause_menu.show()
 	get_tree().paused = true

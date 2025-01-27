@@ -11,6 +11,7 @@ signal game_debug_hide
 var _is_in_game: bool = false
 var _is_paused: bool = false
 var is_debug_label_visible: bool = false
+var capture_mouse_ingame: bool = true
 #endregion
 
 enum InputType {MOUSE, JOYPAD}
@@ -38,10 +39,11 @@ func set_is_in_game(b: bool) -> void:
 	_update_mouse_capture()
 
 func _update_mouse_capture() -> void:
-	if (not _is_in_game) || _is_paused:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	else:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if capture_mouse_ingame:
+		if (not _is_in_game) || _is_paused:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func set_is_paused(b: bool) -> void:
 	_is_paused = b

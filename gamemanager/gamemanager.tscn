@@ -35,6 +35,7 @@ size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="DebugLabel" type="Label" parent="SubViewportContainer/MenuLayer"]
+unique_name_in_owner = true
 visible = false
 offset_left = 23.0
 offset_top = 16.0
@@ -42,6 +43,7 @@ offset_right = 600.0
 offset_bottom = 308.0
 
 [node name="PauseMenu" parent="SubViewportContainer/MenuLayer" instance=ExtResource("2_b2lg8")]
+unique_name_in_owner = true
 visible = false
 
 [connection signal="exit_game_btn_pressed" from="SubViewportContainer/MenuLayer/PauseMenu" to="." method="_quit_game"]

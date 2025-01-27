@@ -3,18 +3,20 @@ class_name GameManager
 
 ## Use this when you have only one level
 @export var main_level: PackedScene
+## Whether the mouse should be captured while in a level
+@export var is_mouse_captured_in_level: bool = true
 
 @export_subgroup("Level Loading")
 ## Whether your game contains multiple levels.
 ## Uncheck if you only have one "Level" in your game
 ## If disabled, no level select option will be given in the title screen
-@export var multiple_levels: bool = true
+@export var has_multiple_levels: bool = true
 ## The number of the highest level. For 1 Level this is 1
 @export var max_level: int = 0
 ## Formatable Strig pointing to
 @export var level_location = "res://levels/level_%s.tscn"
 
-@onready var pause_menu: Control = $SubViewportContainer/MenuLayer/PauseMenu
+@onready var pause_menu: Control = %PauseMenu
 @onready var menu_layer: Viewport = $SubViewportContainer/MenuLayer
 
 var level = 0
@@ -23,15 +25,12 @@ var current_level_node: Node
 
 func _ready() -> void:
 	Global.set_game_manager(self)
-	DebugGlobal.debug_label = $SubViewportContainer/MenuLayer/DebugLabel
+	DebugGlobal.debug_label = %DebugLabel
 	for i in range(max_level): 
 		completed_levels.append(false)
 	# Load settings
 	Settings.load_config()
 	
-	if OS.get_name() == "Web":
-		Settings._set_graphics(Settings.GraphicsPreset.TOASTER)
-		
 	# Connect to InputManager
 	InputManager.game_pause.connect(pause)
 	InputManager.game_unpause.connect(resume)
@@ -48,6 +47,7 @@ func _start_game() -> void:
 
 func pause():
 	InputManager.set_is_paused(true)
+	$SubViewportContainer.move_to_front()
 	pause_menu.move_to_front()
 	pause_menu.show()
 	get_tree().paused = true
@@ -65,6 +65,7 @@ func resume():
 func _show_main_level() -> void:
 	InputManager.set_is_in_game(true)
 	var next_level: Node = main_level.instantiate()
+	InputManager.set_is_in_game(true)
 	if next_level.has_signal("win"):
 		next_level.win.connect(_next_level)
 	if next_level.has_signal("reset"):
@@ -74,19 +75,18 @@ func _show_main_level() -> void:
 	
 
 func _next_level() -> void:
-	if level <= max_level and max_level > 0:
+	if level < max_level and max_level > 0:
 		InputManager.set_is_in_game(true)
 		level += 1
 		_show_level(level)
 		completed_levels[level - 1] = true
-	else: # Game won
-		print("You win the Game")
+	else: 
 		_show_win_screen()
 
 func _show_level(level_nr: int) -> void:
 	InputManager.set_is_in_game(true)
 	level = level_nr
-	var next_level = load(level_location % str(level))
+	var next_level = load(level_location % str(level)).instantiate()
 	if next_level.has_signal("win"):
 		next_level.win.connect(_next_level)
 	if next_level.has_signal("reset"):
@@ -95,6 +95,10 @@ func _show_level(level_nr: int) -> void:
 	current_level_node = next_level
 	
 func _reload_current_level() -> void:
+	# Destroy level
+	if current_level_node != null:
+		current_level_node.queue_free()
+		current_level_node = null
 	_show_level(level)
 #endregion
 
@@ -103,7 +107,6 @@ func _reload_current_level() -> void:
 
 func _show_win_screen() -> void:
 	InputManager.set_is_in_game(false)
-	print("You win the Game")
 	var win_screen: Control = load("res://ui/screens/win-screen/win_screen.tscn").instantiate()
 	win_screen.tree_exited.connect(_show_title_screen)
 	add_child(win_screen)
@@ -121,7 +124,7 @@ func _show_title_screen() -> void:
 	title_screen.show_level_select.connect(_show_level_select)
 	title_screen.show_settings_screen.connect(_show_settings_screen)
 	title_screen.quit.connect(_quit_game)
-	title_screen.show_levels(multiple_levels)
+	title_screen.show_levels(has_multiple_levels)
 	menu_layer.add_child(title_screen)
 
 func _show_level_select() -> void:

@@ -29,7 +29,13 @@ func _dicts_to_entry(array: Array) -> Array[CreditEntry]:
 		var item = CreditEntry.new()
 		item.name = dict["name"]
 		item.descriptor = dict["descriptor"] if dict.has("descriptor") else ""
-		item.license = dict["license"] if dict.has("license") else ""
+		if dict.has("license"):
+			item.license = dict["license"] if dict["license"] else ""
+		elif dict.has("license_file"):
+			item.license = FileAccess.open(dict["license_file"], FileAccess.READ).get_as_text()\
+				if FileAccess.file_exists(dict["license_file"]) else ""
+		else:
+			item.license = ""
 		item.url = dict["url"] if dict.has("url") else ""
 		item_array.append(item)
 	return item_array

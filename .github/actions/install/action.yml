@@ -23,7 +23,7 @@ runs:
     - name: Install Godot
       shell: bash
       run: |
-        curl -L -o ./godot.zip "https://github.com/godotengine/godot/releases/download/${{ inputs.godot-version }}-stable/Godot_v${{ inputs.godot-version }}-stable_linux_x86_64.zip"
+        curl -L -o ./godot.zip "https://github.com/godotengine/godot/releases/download/${{ inputs.godot-version }}-stable/Godot_v${{ inputs.godot-version }}-stable_linux.x86_64.zip"
         unzip ./godot.zip
         mv ./Godot_v${{ inputs.godot-version }}-stable_linux_x86_64/Godot_v${{ inputs.godot-version }}-stable_linux.x86_64 $HOME/godot
 

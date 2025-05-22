@@ -39,6 +39,9 @@ runs:
         unzip ./godot-templates.zip
         mkdir -p "$GODOT_TEMPLATES_DIR"
         mv ./templates "$GODOT_TEMPLATES_DIR/${{ inputs.godot-version }}.stable"
+        cd "$GODOT_TEMPLATES_DIR/${{ inputs.godot-version }}.stable"
+        ls -la 
+        pwd
 
     - name: Report back the executable location
       shell: bash

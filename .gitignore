@@ -4,7 +4,8 @@
 # Godot-specific ignores
 .import/
 export.cfg
-export_presets.cfg
+# !!!PLEASE COMMEWNT IN THE PRESETS WHEN USING SECRETS IN YOUR BUILD SETTINGS!!! OTHERWISE THEY MIGHT LEAK!
+#export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation

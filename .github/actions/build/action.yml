@@ -19,6 +19,7 @@ runs:
       shell: bash
       run: ${{ inputs.godot-executable }} --import --headless --verbose
 
+############### WINDOWS ###############
     - name: Build Windows application
       shell: bash
       run: |
@@ -37,6 +38,7 @@ runs:
         name: windows
         path: ${{ inputs.build-dir }}/windows/windows.zip
 
+############### LINUX ###############
     - name: Build Linux application
       shell: bash
       run: |
@@ -55,6 +57,7 @@ runs:
         name: linux
         path: ${{ inputs.build-dir }}/linux/linux.tar
 
+############### MAC ###############
     - name: Build macOS application
       shell: bash
       run: |

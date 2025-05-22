@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: install Godot
-        uses: ./.github/actions/install
+        uses: ./.github/actions/install.yml
         with:
           install-templates: true
           godot-version: 4.4.1
         id: install_godot
 
       - name: build Game
-        uses: ./.github/actions/build
+        uses: ./.github/actions/build.yml
         with:
           godot-executable: ${{ steps.install-godot.outputs.godot-executable }}

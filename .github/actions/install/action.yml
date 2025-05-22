@@ -27,13 +27,13 @@ runs:
         unzip ./godot.zip
 
         file Godot_v4.4.1-stable_linux.x86_64
-        mv ./Godot_v${{ inputs.godot-version }}-stable_linux.x86_64 $HOME/godot
+        mv ./Godot_v${{ inputs.godot-version }}-stable_linux.x86_64 /home/runner/godot
 
     - name: Install Godot templates
       shell: bash
       if: ${{ inputs.install-templates }}
       env:
-        GODOT_TEMPLATES_DIR: $HOME/.local/share/godot/export_templates/
+        GODOT_TEMPLATES_DIR: /home/runner/.local/share/godot/export_templates/
       run: |
         curl -L -o ./godot-templates.zip "https://github.com/godotengine/godot/releases/download/${{ inputs.godot-version }}-stable/Godot_v${{ inputs.godot-version }}-stable_export_templates.tpz"
         unzip ./godot-templates.zip
@@ -46,6 +46,6 @@ runs:
     - name: Report back the executable location
       shell: bash
       env:
-        GODOT_EXECUTABLE: $HOME/godot
+        GODOT_EXECUTABLE: /home/runner/godot
       run: echo "GODOT_EXECUTABLE=${{ env.GODOT_EXECUTABLE }}" >> $GITHUB_OUTPUT
       id: assign-executable

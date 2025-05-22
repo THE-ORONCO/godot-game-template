@@ -24,7 +24,7 @@ runs:
       shell: bash
       run: |
         mkdir -p ${{ inputs.build-dir }}/windows
-        ${{ inputs.godot-executable }} --export-debug Windows --headless
+        ${{ inputs.godot-executable }} --export-debug "Windows Desktop" --headless
         [ "$(ls -A ${{ inputs.build-dir }}/windows)" ]
 
     - name: Compress Windows build

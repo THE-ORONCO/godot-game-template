@@ -20,7 +20,7 @@ runs:
       shell: bash
       run: |
         mkdir -p ./build/windows
-        ${{ inputs.godot-executable }} --export-debug "Windows Desktop"./build/windows/game.exe --headless 
+        ${{ inputs.godot-executable }} --export-debug "Windows Desktop" ./build/windows/game.exe --headless 
         [ "$(ls -A ./build/windows)" ]
 
     - name: Compress Windows build
@@ -53,12 +53,31 @@ runs:
         name: linux
         path: ./build/linux/linux.tar
 
-############### MAC ###############
+    ############### MAC ###############
     - name: Build macOS application
       shell: bash
       run: |
         mkdir -p ./build/macos
-        ${{ inputs.godot-executable }} --export-debug macOS ./build/macos/macos.zip --headless
+        ${{ inputs.godot-executable }} --export-debug macOS ./build/macos/macos.app --headless
+        [ "$(ls -A ./build/macos)" ]
+
+    - name: Compress macOS build (to preserve permissions)
+      shell: bash
+      run: |
+        cd ./build/macos
+        tar -cvf ./macos.tar --exclude='*.command' ./*
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: macos
+        path: ./build/macos/macos.tar
+
+############### WEB ###############
+    - name: Build web application
+      shell: bash
+      run: |
+        mkdir -p ./build/web
+        ${{ inputs.godot-executable }} --export-debug Web ./build/web/web.html --headless
         [ "$(ls -A ./build/macos)" ]
 
     - name: Compress macOS build (to preserve permissions)

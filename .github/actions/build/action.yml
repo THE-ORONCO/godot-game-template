@@ -1,5 +1,6 @@
 name: 'Build Godot'
 description: 'Build Godot applications for Windows, macOS, and Linux'
+author: 'F.I.O.'
 
 inputs:
   build-dir:

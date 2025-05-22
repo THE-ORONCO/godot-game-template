@@ -2,7 +2,7 @@ name: Build da game
 run-name: ${{ github.actor }} game deved and wants to build 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Build-Godot-Game:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -24,13 +24,13 @@ jobs:
           
 
       - name: install Godot
-        uses: ./.github/actions/install/action.yml
+        uses: ./.github/actions/install/action
         with:
           install-templates: true
           godot-version: 4.4.1
         id: install_godot
 
       - name: build Game
-        uses: ./.github/actions/build/action.yml
+        uses: ./.github/actions/build/action
         with:
           godot-executable: ${{ steps.install-godot.outputs.godot-executable }}

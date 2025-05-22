@@ -26,6 +26,8 @@ runs:
         curl -L -o ./godot.zip "https://github.com/godotengine/godot/releases/download/${{ inputs.godot-version }}-stable/Godot_v${{ inputs.godot-version }}-stable_linux.x86_64.zip"
         unzip ./godot.zip
         ls -la Godot_v4.4.1-stable_linux.x86_64
+        ls -la Godot_v4.4.1-stable_linux.x86_64
+        file Godot_v4.4.1-stable_linux.x86_64/Godot_v4.4.1-stable_linux.x86_64
         mv ./Godot_v${{ inputs.godot-version }}-stable_linux.x86_64/Godot_v${{ inputs.godot-version }}-stable_linux.x86_64 $HOME/godot
 
     - name: Install Godot templates

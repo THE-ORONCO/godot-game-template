@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Build da game
+run-name: ${{ github.actor }} game deved and wants to build 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          lfs: 'true'
 
       - name: install Godot
         uses: ./.github/actions/install.yml

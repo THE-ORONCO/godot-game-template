@@ -3,10 +3,6 @@ description: 'Build Godot applications for Windows, macOS, and Linux'
 author: 'F.I.O.'
 
 inputs:
-  build-dir:
-    description: 'The chosen build directory'
-    required: true
-    default: 'build'
   godot-executable:
     description: 'The path to the Godot executable'
     required: false
@@ -23,55 +19,55 @@ runs:
     - name: Build Windows application
       shell: bash
       run: |
-        mkdir -p ${{ inputs.build-dir }}/windows
+        mkdir -p ./build/windows
         ${{ inputs.godot-executable }} --export-debug "Windows Desktop" --headless
-        [ "$(ls -A ${{ inputs.build-dir }}/windows)" ]
+        [ "$(ls -A ./build/windows)" ]
 
     - name: Compress Windows build
       shell: bash
       run: |
-        cd ${{ inputs.build-dir }}/windows
+        cd ./build/windows
         zip -m ./windows.zip ./*
 
     - uses: actions/upload-artifact@v4
       with:
         name: windows
-        path: ${{ inputs.build-dir }}/windows/windows.zip
+        path: ./build/windows/windows.zip
 
 ############### LINUX ###############
     - name: Build Linux application
       shell: bash
       run: |
-        mkdir -p ${{ inputs.build-dir }}/linux
+        mkdir -p ./build/linux
         ${{ inputs.godot-executable }} --export-debug Linux --headless
-        [ "$(ls -A ${{ inputs.build-dir }}/linux)" ]
+        [ "$(ls -A ./build/linux)" ]
 
     - name: Compress Linux build (to preserve permissions)
       shell: bash
       run: |
-        cd ${{ inputs.build-dir }}/linux
+        cd ./build/linux
         tar -cvf ./linux.tar ./*
 
     - uses: actions/upload-artifact@v4
       with:
         name: linux
-        path: ${{ inputs.build-dir }}/linux/linux.tar
+        path: ./build/linux/linux.tar
 
 ############### MAC ###############
     - name: Build macOS application
       shell: bash
       run: |
-        mkdir -p ${{ inputs.build-dir }}/macos
+        mkdir -p ./build/macos
         ${{ inputs.godot-executable }} --export-debug macOS --headless
-        [ "$(ls -A ${{ inputs.build-dir }}/macos)" ]
+        [ "$(ls -A ./build/macos)" ]
 
     - name: Compress macOS build (to preserve permissions)
       shell: bash
       run: |
-        cd ${{ inputs.build-dir }}/macos
+        cd ./build/macos
         tar -cvf ./macos.tar --exclude='*.command' ./*
 
     - uses: actions/upload-artifact@v4
       with:
         name: macos
-        path: ${{ inputs.build-dir }}/macos/macos.tar
+        path: ./build/macos/macos.tar

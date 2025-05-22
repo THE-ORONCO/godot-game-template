@@ -15,7 +15,7 @@ jobs:
         with:
           install-templates: true
           godot-version: 4.4.1
-        id: install_godot
+        id: install-godot
 
       - name: build Game
         uses: ./.github/actions/build

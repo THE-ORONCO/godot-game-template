@@ -20,7 +20,7 @@ runs:
       shell: bash
       run: |
         mkdir -p ./build/windows
-        ${{ inputs.godot-executable }} --export-debug "Windows Desktop" --headless
+        ${{ inputs.godot-executable }} --export-debug "Windows Desktop"./build/windows/game.exe --headless 
         [ "$(ls -A ./build/windows)" ]
 
     - name: Compress Windows build
@@ -39,7 +39,7 @@ runs:
       shell: bash
       run: |
         mkdir -p ./build/linux
-        ${{ inputs.godot-executable }} --export-debug Linux --headless
+        ${{ inputs.godot-executable }} --export-debug Linux ./build/linux/linux.x86_64 --headless
         [ "$(ls -A ./build/linux)" ]
 
     - name: Compress Linux build (to preserve permissions)
@@ -58,7 +58,7 @@ runs:
       shell: bash
       run: |
         mkdir -p ./build/macos
-        ${{ inputs.godot-executable }} --export-debug macOS --headless
+        ${{ inputs.godot-executable }} --export-debug macOS ./build/macos/macos.zip --headless
         [ "$(ls -A ./build/macos)" ]
 
     - name: Compress macOS build (to preserve permissions)

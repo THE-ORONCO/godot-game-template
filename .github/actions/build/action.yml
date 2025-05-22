@@ -19,24 +19,6 @@ runs:
       shell: bash
       run: ${{ inputs.godot-executable }} --import --headless --verbose
 
-    - name: Build macOS application
-      shell: bash
-      run: |
-        mkdir -p ${{ inputs.build-dir }}/macos
-        ${{ inputs.godot-executable }} --export-debug macOS --headless
-        [ "$(ls -A ${{ inputs.build-dir }}/macos)" ]
-
-    - name: Compress macOS build (to preserve permissions)
-      shell: bash
-      run: |
-        cd ${{ inputs.build-dir }}/macos
-        tar -cvf ./macos.tar --exclude='*.command' ./*
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: macos
-        path: ${{ inputs.build-dir }}/macos/macos.tar
-
     - name: Build Windows application
       shell: bash
       run: |
@@ -72,3 +54,21 @@ runs:
       with:
         name: linux
         path: ${{ inputs.build-dir }}/linux/linux.tar
+
+    - name: Build macOS application
+      shell: bash
+      run: |
+        mkdir -p ${{ inputs.build-dir }}/macos
+        ${{ inputs.godot-executable }} --export-debug macOS --headless
+        [ "$(ls -A ${{ inputs.build-dir }}/macos)" ]
+
+    - name: Compress macOS build (to preserve permissions)
+      shell: bash
+      run: |
+        cd ${{ inputs.build-dir }}/macos
+        tar -cvf ./macos.tar --exclude='*.command' ./*
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: macos
+        path: ${{ inputs.build-dir }}/macos/macos.tar

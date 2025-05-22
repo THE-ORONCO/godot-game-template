@@ -10,7 +10,7 @@ inputs:
   godot-executable:
     description: 'The path to the Godot executable'
     required: false
-    default: $HOME/godot
+    default: /home/runner/godot
 
 runs:
   using: 'composite'

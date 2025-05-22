@@ -9,19 +9,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: 'true'
-      - run: |
-          ls -la
-          echo ============================================
-          ls -la .github
-          echo ============================================
-          ls -la .github
-          echo ============================================
-          ls -la .github/actions
-          echo ============================================
-          ls -la .github/actions/build
-          echo ============================================
-          ls -la .github/actions/install
-          
 
       - name: install Godot
         uses: ./.github/actions/install/action

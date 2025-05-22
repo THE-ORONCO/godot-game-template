@@ -11,13 +11,13 @@ jobs:
           lfs: 'true'
 
       - name: install Godot
-        uses: ./.github/actions/install/action
+        uses: ./.github/actions/install
         with:
           install-templates: true
           godot-version: 4.4.1
         id: install_godot
 
       - name: build Game
-        uses: ./.github/actions/build/action
+        uses: ./.github/actions/build
         with:
           godot-executable: ${{ steps.install-godot.outputs.godot-executable }}

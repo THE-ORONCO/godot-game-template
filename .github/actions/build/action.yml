@@ -78,15 +78,15 @@ runs:
       run: |
         mkdir -p ./build/web
         ${{ inputs.godot-executable }} --export-debug Web ./build/web/web.html --headless
-        [ "$(ls -A ./build/macos)" ]
+        [ "$(ls -A ./build/web)" ]
 
-    - name: Compress macOS build (to preserve permissions)
+    - name: Compress web build (to preserve permissions)
       shell: bash
       run: |
-        cd ./build/macos
-        tar -cvf ./macos.tar --exclude='*.command' ./*
+        cd ./build/web
+        tar -cvf ./web.tar --exclude='*.command' ./*
 
     - uses: actions/upload-artifact@v4
       with:
-        name: macos
-        path: ./build/macos/macos.tar
+        name: web
+        path: ./build/web/web.tar

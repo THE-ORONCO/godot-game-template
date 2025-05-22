@@ -1,0 +1,46 @@
+name: 'Install Godot'
+description: 'Installs godot with the specified version'
+author: 'F.I.O.'
+
+inputs:
+  godot-version:
+    description: 'The version of Godot to build with'
+    required: true
+    default: 4.4.1
+  install-templates:
+    description: 'Whether or not to install the Godot export templates'
+    required: false
+    default: false
+
+outputs:
+  godot-executable:
+    description: 'The installed executable location'
+    value: ${{ steps.assign-executable.outputs.GODOT_EXECUTABLE }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Godot
+      shell: bash
+      run: |
+        curl -L -o ./godot.zip "https://github.com/godotengine/godot/releases/download/${{ inputs.godot-version }}-stable/Godot_v${{ inputs.godot-version }}-stable_linux_x86_64.zip"
+        unzip ./godot.zip
+        mv ./Godot_v${{ inputs.godot-version }}-stable_linux_x86_64/Godot_v${{ inputs.godot-version }}-stable_linux.x86_64 $HOME/godot
+
+    - name: Install Godot templates
+      shell: bash
+      if: ${{ inputs.install-templates }}
+      env:
+        GODOT_TEMPLATES_DIR: $HOME/.local/share/godot/export_templates/
+      run: |
+        curl -L -o ./godot-templates.zip "https://github.com/godotengine/godot/releases/download/${{ inputs.godot-version }}-stable/Godot_v${{ inputs.godot-version }}-stable_export_templates.tpz"
+        unzip ./godot-templates.zip
+        mkdir -p "$GODOT_TEMPLATES_DIR"
+        mv ./templates "$GODOT_TEMPLATES_DIR/${{ inputs.godot-version }}.stable"
+
+    - name: Report back the executable location
+      shell: bash
+      env:
+        GODOT_EXECUTABLE: $HOME/godot
+      run: echo "GODOT_EXECUTABLE=${{ env.GODOT_EXECUTABLE }}" >> $GITHUB_OUTPUT
+      id: assign-executable

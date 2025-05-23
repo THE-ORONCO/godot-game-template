@@ -23,3 +23,48 @@ Um wichtige Werte immer im Augenwinkel zu haben verfügt das Template über eine
 
 ### Spiel pausieren
 Wenn die `pause`-Action der InputMap in einem Level ausgeführt wird, wird ein Pausemenü angezeigt, indem das Level beendet, -fortgeführt, oder Einstellungen angepasst werden. Wenn der `ProcessMode` der Levels auf "Pausable" gesetzt ist, werden die Aktivitäten im Level mitpausiert, solange das Pausemanü angezeigt wird.
+
+
+## Further reading
+### Tutorials
+#### GDquest
+https://www.youtube.com/@Gdquest
+
+#### Brackeys
+https://www.youtube.com/@Brackeys
+
+#### Docs
+https://docs.godotengine.org/en/latest/
+
+
+### Assets
+#### Kenney 🥰
+https://www.kenney.nl/
+
+#### Opengameart
+https://opengameart.org/
+
+#### Free Sound
+https://freesound.org/
+
+#### Sonisss
+https://sonniss.com/gameaudiogdc/
+
+#### Shaders
+https://godotshaders.com/
+
+
+### Templates
+#### Karlsruhe
+
+#### 3D Platformer
+https://github.com/KenneyNL/Starter-Kit-3D-Platformer
+
+#### FPS
+https://github.com/KenneyNL/Starter-Kit-FPS
+
+#### City-Builder
+https://github.com/KenneyNL/Starter-Kit-City-Builder
+
+#### Generic
+https://github.com/KenneyNL/Starter-Kit-Basic-Scene

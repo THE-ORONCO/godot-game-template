@@ -44,6 +44,12 @@ https://saint11.art/blog/pixel-art-tutorials/
 #### Sakurai (Game Design)
 https://www.youtube.com/@sora_sakurai_en 
 
+### References
+#### The Spriters Resource
+https://www.spriters-resource.com/
+#### The Modelers Resource
+https://www.models-resource.com/
+
 ### Tools
 #### Aseprite (Pixelart)
 > kostet etwas, wer es aber selbst compiliert bekommt kann es kostenlos nutzen (https://github.com/aseprite/aseprite/)
@@ -65,9 +71,13 @@ https://github.com/KenneyNL/Adobe-Alternatives
 https://trenchbroom.github.io/
 
 ### Assets
+> **IMMER AUF DIE LIZENZEN ACHTEN**
+
+#### Free Game Assets
 Ein Sammlung an verschiedenen Websites mit kostenlosen Game-Assets: https://www.freegameassets.com/
 
-> **IMMER AUF DIE LIZENZEN ACHTEN**
+#### Godot Asset Library
+https://godotengine.org/asset-library/asset
 
 #### Kenney 🥰
 https://www.kenney.nl/
@@ -142,3 +152,6 @@ https://phantom-camera.dev/
 
 #### Dialog Manager
 https://github.com/nathanhoad/godot_dialogue_manager
+
+#### Godot Block Coding
+https://github.com/endlessm/godot-block-coding

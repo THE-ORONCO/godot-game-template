@@ -38,8 +38,37 @@ https://www.youtube.com/@Brackeys
 #### Docs
 https://docs.godotengine.org/en/latest/
 
+#### Pixel Art
+https://saint11.art/blog/pixel-art-tutorials/
+
+#### Sakurai (Game Design)
+https://www.youtube.com/@sora_sakurai_en 
+
+### Tools
+#### Aseprite (Pixelart)
+> kostet etwas, wer es aber selbst compiliert bekommt kann es kostenlos nutzen (https://github.com/aseprite/aseprite/)
+https://www.aseprite.org/ 
+
+#### graphicsGale (Pixelart)
+https://graphicsgale.com/us/
+
+#### Audacity (Audio)
+https://www.audacityteam.org/download/
+
+#### Krita (2D-Art)
+https://krita.org/en/
+
+#### Adobe Alternatives
+https://github.com/KenneyNL/Adobe-Alternatives
+
+#### TrenchBroom (Quake-Map Designer)
+https://trenchbroom.github.io/
 
 ### Assets
+Ein Sammlung an verschiedenen Websites mit kostenlosen Game-Assets: https://www.freegameassets.com/
+
+> **IMMER AUF DIE LIZENZEN ACHTEN**
+
 #### Kenney 🥰
 https://www.kenney.nl/
 
@@ -54,7 +83,6 @@ https://sonniss.com/gameaudiogdc/
 
 #### Shaders
 https://godotshaders.com/
-
 
 ### Templates
 #### Karlsruhe
@@ -72,6 +100,13 @@ https://github.com/KenneyNL/Starter-Kit-City-Builder
 https://github.com/KenneyNL/Starter-Kit-Basic-Scene
 
 ### Plugins
+
+#### Aseprite Wizzard
+https://github.com/viniciusgerevini/godot-aseprite-wizard
+
+#### G.U.I.D.E (Input Manager)
+https://github.com/godotneers/G.U.I.D.E
+
 #### State Charts
 https://github.com/derkork/godot-statecharts
 
@@ -98,3 +133,12 @@ https://github.com/limbonaut/limboai
 
 #### Limbo Console (Dev-Konsole)
 https://github.com/limbonaut/limbo_console
+
+#### Godot Plushie
+https://github.com/Robert-K/godot-plushie-viewport-pet
+
+#### Phantom Camera
+https://phantom-camera.dev/
+
+#### Dialog Manager
+https://github.com/nathanhoad/godot_dialogue_manager

@@ -68,3 +68,31 @@ https://github.com/KenneyNL/Starter-Kit-City-Builder
 
 #### Generic
 https://github.com/KenneyNL/Starter-Kit-Basic-Scene
+
+### Plugins
+#### State Charts
+https://github.com/derkork/godot-statecharts
+
+#### GUT (Tests)
+https://gut.readthedocs.io/en/9.3.1/
+
+#### Ridiculous Coding
+https://github.com/jotson/ridiculous_coding
+
+#### Func_Godot (Quake Maps -> Godot)
+https://github.com/func-godot
+
+#### Debug Draw 3D
+https://github.com/DmitriySalnikov/godot_debug_draw_3d
+
+#### TODO Manager 
+https://github.com/OrigamiDev-Pete/TODO_Manager
+
+#### Edit Resources as Sheets
+https://github.com/don-tnowe/godot-resources-as-sheets-plugin/
+
+#### Limbo AI (Behavior Trees & State Machines)
+https://github.com/limbonaut/limboai
+
+#### Limbo Console (Dev-Konsole)
+https://github.com/limbonaut/limbo_console

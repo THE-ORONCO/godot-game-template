@@ -1,5 +1,7 @@
 # *Your game here*
 
+Download Godot Here: https://godotengine.org/download
+
 ## godot-game-template
 
 A minimal template for Godot games. Works with 2D and 3D games.
